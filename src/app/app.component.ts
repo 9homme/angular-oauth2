@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OAuthService, NullValidationHandler } from 'angular-oauth2-oidc';
+import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
 import { authConfig } from './auth.config'
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent {
 
   private configureWithNewConfigApi() {
     this.oauthService.configure(authConfig);
-    this.oauthService.tokenValidationHandler = new NullValidationHandler();
+    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
     this.oauthService.setStorage(sessionStorage);
     this.oauthService.tryLogin();
   }

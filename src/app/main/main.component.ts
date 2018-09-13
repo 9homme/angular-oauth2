@@ -9,11 +9,12 @@ import { OAuthService } from 'angular-oauth2-oidc';
 })
 export class MainComponent implements OnInit {
 
-  userInfo = 'Not Login';
+  productInfo = 'N/A';
   constructor(private http: HttpClient, private oauthService: OAuthService) { }
 
   ngOnInit() {
-    this.http.get("http://localhost:8080/resource/user").subscribe((data) => this.userInfo = JSON.stringify(data) );
+    this.http.get("http://localhost:9999/products/search?sku=P00001")//, {headers: {'Authorization':'Bearer fbbeacd6-f3d9-492f-a03e-9b538b661adc'}})
+      .subscribe((data) => this.productInfo = JSON.stringify(data) );
   }
 
 }
